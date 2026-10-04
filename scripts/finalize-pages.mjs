@@ -4,6 +4,6 @@ if(!base.startsWith('/')||!base.endsWith('/')||base.includes('..'))throw new Err
 const viewer='pages-dist/viewer.html';
 writeFileSync(viewer,readFileSync(viewer,'utf8').replaceAll("'/models/'",JSON.stringify(base+'models/')).replaceAll("'/images/'",JSON.stringify(base+'images/')));
 const index='pages-dist/index.html';
-writeFileSync(index,readFileSync(index,'utf8').replace('href="/images/mayer-mark.png"',`href="${base}images/mayer-mark.png"`));
+writeFileSync(index,readFileSync(index,'utf8').replaceAll('href="/images/',`href="${base}images/`));
 writeFileSync('pages-dist/.nojekyll','');
 console.log(`GitHub Pages assets prepared for ${base}`);

@@ -1,11 +1,13 @@
-# Mayer — Futebol Society
+# Mayer Esportes
 
 Site da Mayer com apresentação dos campos Fut5/Fut7, modelos 3D e sistema de reservas.
 
 - **Apresentação pública (GitHub Pages):** https://sendodonto.github.io/mayer-futebol-society/
 - **Agenda e gestão (revisão privada):** https://mayer-futebol-society.ezkn-p1.chatgpt.site
 
-O GitHub Pages publica a apresentação estática. Os botões de reserva, Minhas reservas e gestão levam ao sistema com servidor e banco D1. A agenda permanece privada e exige uma conta autorizada. Nenhuma disponibilidade fictícia é exibida como horário real, e nenhuma reserva é armazenada apenas no navegador.
+O GitHub Pages publica a apresentação estática com a identidade oficial da Mayer Esportes, desde 1998. As reservas públicas encaminham ao WhatsApp da unidade escolhida (Dom Pedrito, Mayer 52 ou Mayer 61) ou ao aplicativo indicado no Instagram. A agenda do novo site permanece disponível como prévia privada e exige uma conta autorizada. Nenhuma disponibilidade fictícia é exibida como horário real, e nenhuma reserva é armazenada apenas no navegador.
+
+As fontes, contatos, capas dos vídeos oficiais e limites das informações verificadas estão em [BRAND-SOURCES.md](BRAND-SOURCES.md). Endereços e preços devem ser consultados com a equipe; os modelos 3D permanecem ilustrativos.
 
 ## Publicar no GitHub Pages
 
