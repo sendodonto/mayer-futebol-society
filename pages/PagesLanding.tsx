@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, ArrowRight, Users, Goal, Box, Menu, X, Phone, Camera, Play, CalendarDays } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Users, Goal, Box, Menu, X, Phone, Camera, CalendarDays } from 'lucide-react';
 import Dialog from '../app/components/Dialog';
 import type { Court } from '../lib/domain';
 
@@ -16,11 +16,6 @@ const data = {
   fut5: { title: 'Fut5', desc: 'Jogo rápido. Time fechado.', players: '5 × 5 jogadores', size: '30 × 18 m' },
   fut7: { title: 'Fut7', desc: 'Mais espaço para o seu futebol.', players: '7 × 7 jogadores', size: '50 × 30 m' },
 };
-const reels = [
-  { id: 'Dc5zh62FsJq', image: 'quadra-noite.jpg', title: 'A Mayer à noite', alt: 'Capa de vídeo oficial com apresentação na quadra iluminada' },
-  { id: 'DcgfpMpS7h7', image: 'quadra-treino.jpg', title: 'Cuidado com o gramado', alt: 'Capa de vídeo oficial com manutenção do gramado da Mayer' },
-  { id: 'DcbhdgmSui1', image: 'quadra-dia.jpg', title: 'Conheça a quadra', alt: 'Capa de vídeo oficial mostrando a quadra e o alambrado' },
-];
 function Brand() {
   return <><img src={asset('images/official/mayer-escudo.jpg')} width={150} height={150} alt="" /><span>MAYER<small>ESPORTES</small></span></>;
 }
@@ -38,7 +33,7 @@ export default function PagesLanding() {
       <a className="brand" href="#inicio" aria-label="Mayer Esportes, início" onClick={closeMenu}><Brand /></a>
       <nav id="navegacao" aria-label="Navegação principal" className={menu ? 'nav open' : 'nav'}>
         <a href="#campos" onClick={closeMenu}>Fut5 & Fut7</a>
-        <a href="#mayer-em-campo" onClick={closeMenu}>A Mayer em campo</a>
+        <a href="#sobre" onClick={closeMenu}>Sobre a Mayer</a>
         <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Instagram <ArrowUpRight size={14} /></a>
         <a className="nav-cta" href="#reservas" onClick={closeMenu}>Reservar horário <ArrowUpRight size={17} /></a>
       </nav>
@@ -47,11 +42,15 @@ export default function PagesLanding() {
     <main id="conteudo">
       <section id="inicio" className="hero mayer-hero">
         <div className="hero-content container">
-          <div className="hero-copy"><h1>DESDE 1998,<br />O JOGO<br /><span>ACONTECE AQUI.</span></h1>
-            <p>Futebol, churrasco e bons encontros.<br />Chame o time. O próximo jogo é na Mayer.</p>
-            <div className="hero-actions"><a className="button orange" href="#reservas">Reservar meu jogo <ArrowUpRight size={21} /></a><a className="hero-secondary" href="#mayer-em-campo">Conhecer as quadras <ArrowRight size={18} /></a></div>
+          <div className="hero-copy"><h1>Seu próximo jogo<br />começa na <span>Mayer.</span></h1>
+            <p>Escolha seu campo, reúna a turma e combine o horário.<br /> O resto é bola rolando.</p>
+            <div className="hero-actions"><a className="button orange" href="#reservas">Encontrar meu horário <ArrowUpRight size={20} /></a><a className="hero-secondary" href="#campos">Conhecer os campos <ArrowRight size={18} /></a></div>
           </div>
-          <figure className="hero-photo"><img src={asset('images/official/quadra-treino.jpg')} width={640} height={1138} alt="Gramado da Mayer durante manutenção, em imagem de publicação oficial" fetchPriority="high" /><figcaption>Na Mayer, de verdade.<a href="https://www.instagram.com/mayeresportes/reel/DcgfpMpS7h7/" target="_blank" rel="noopener noreferrer">Ver vídeo original <ArrowUpRight size={14} /></a></figcaption></figure>
+          <div className="hero-model">
+            <div className="hero-model-tabs" role="group" aria-label="Modelo em destaque">{(['fut5', 'fut7'] as Court[]).map(c => <button key={c} aria-pressed={court === c} className={court === c ? 'selected' : ''} onClick={() => setCourt(c)}>{data[c].title}<span>{data[c].players}</span></button>)}</div>
+            <img src={asset(`images/${court}.png`)} width={1600} height={1200} alt={`Perspectiva do modelo ilustrativo ${data[court].title}`} fetchPriority="high" />
+            <div className="hero-model-bottom"><span>Modelo ilustrativo · {data[court].title}</span><button onClick={() => setViewer(court)}><Box size={16} />Ver em 3D <ArrowUpRight size={15} /></button></div>
+          </div>
         </div>
       </section>
       <div className="mayer-services container" aria-label="Estrutura divulgada no perfil oficial"><span>Quadras</span><span>Churrasqueiras</span><span>Eventos</span><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">@mayeresportes <Camera size={18} /></a></div>
@@ -76,22 +75,17 @@ export default function PagesLanding() {
           </aside>
         </div>
       </section>
-      <section id="mayer-em-campo" className="social-section container"><div className="section-title"><h2>A Mayer em campo.</h2><p>As quadras reais, pelos olhos de quem faz o jogo acontecer. Veja os vídeos no perfil oficial.</p></div>
-        <div className="reel-grid">{reels.map(reel => <a className="reel" key={reel.id} href={`https://www.instagram.com/mayeresportes/reel/${reel.id}/`} target="_blank" rel="noopener noreferrer"><div className="reel-image"><img src={asset(`images/official/${reel.image}`)} width={640} height={1138} alt={reel.alt} loading="lazy" /><span className="play-icon"><Play size={24} fill="currentColor" /></span></div><div className="reel-caption"><h3>{reel.title}</h3><ArrowUpRight size={22} /></div><span className="reel-source">Assistir no Instagram</span></a>)}</div>
-      </section>
-      <section className="mayer-story container"><img src={asset('images/official/identidade.jpg')} width={640} height={1138} alt="Escudo oficial Mayer Esportes" loading="lazy" /><div><h2>O encontro continua<br />depois do jogo.</h2><p>Desde 1998, o jogo acontece aqui. A Mayer Esportes reúne quadras, churrasqueiras e eventos para o futebol e os encontros da sua turma.</p><a href="#reservas">Converse com a equipe sobre seu evento <ArrowUpRight size={19} /></a></div></section>
+      <section id="sobre" className="mayer-story container"><div><h2>Futebol e bons encontros.<br />Desde 1998.</h2><p>A Mayer Esportes reúne quadras, churrasqueiras e eventos. Um lugar para jogar e continuar o encontro com a sua turma.</p><a href="#reservas">Converse com a equipe sobre seu evento <ArrowUpRight size={19} /></a></div><div className="instagram-call"><Camera size={28} /><h3>Acompanhe a Mayer.</h3><p>Vídeos das quadras, novidades e informações no perfil oficial.</p><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">@mayeresportes <ArrowUpRight size={18} /></a></div></section>
       <section className="faq-section container"><h2>Antes do apito.</h2><div className="faq-list">
         <details><summary>Como reservar um horário?</summary><p>Escolha a unidade na seção de reservas e consulte a equipe pelo WhatsApp. O perfil oficial também disponibiliza um aplicativo para agendamentos.</p></details>
         <details><summary>Quais são os valores?</summary><p>Consulte o WhatsApp da unidade ou o destaque Valores no Instagram. Os preços oficiais ainda não foram informados para este site.</p><a href="https://www.instagram.com/stories/highlights/18186770695399361/" target="_blank" rel="noopener noreferrer">Ver destaque Valores <ArrowUpRight size={14} /></a></details>
         <details><summary>Onde ficam as unidades?</summary><p>Veja o destaque Localização no perfil oficial ou confirme o endereço com a equipe da unidade escolhida.</p><a href="https://www.instagram.com/stories/highlights/18104471186183267/" target="_blank" rel="noopener noreferrer">Ver destaque Localização <ArrowUpRight size={14} /></a></details>
         <details><summary>Também posso reservar para eventos?</summary><p>O perfil oficial divulga quadras, churrasqueiras e eventos. Converse com a unidade para confirmar a estrutura, as condições e a disponibilidade para sua turma.</p></details>
-        <details><summary>Os modelos 3D são das quadras reais?</summary><p>São modelos ilustrativos de Fut5 e Fut7 criados para este projeto. As medidas não foram verificadas nas unidades. As imagens da seção A Mayer em campo são capas dos vídeos oficiais.</p></details>
+        <details><summary>Os modelos 3D são das quadras reais?</summary><p>São modelos ilustrativos de Fut5 e Fut7 criados para este projeto. As medidas não foram verificadas nas unidades.</p></details>
       </div></section>
-      <section className="last-call container"><div><h2>CHAMA O TIME.<br /><span>VEM PRA MAYER.</span></h2><p>Seu futebol. Seu churrasco. Seu encontro.</p></div><a className="button orange" href="#reservas">Consultar um horário <ArrowUpRight size={23} /></a></section>
+      <section className="last-call container"><div><h2>Chame o time.<br /><span>O encontro é na Mayer.</span></h2><p>Seu futebol. Seu churrasco. Seu encontro.</p></div><a className="button orange" href="#reservas">Consultar um horário <ArrowUpRight size={23} /></a></section>
     </main>
     <footer className="footer container"><a className="brand" href="#inicio" aria-label="Mayer Esportes, voltar ao início"><Brand /></a><div><p>Desde 1998, o jogo acontece aqui.</p><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">@mayeresportes <ArrowUpRight size={14} /></a></div><div className="footer-links"><a href="#reservas">Contatos das unidades <ArrowUpRight size={14} /></a><a href={`${BOOKING_ORIGIN}/#gestao`}>Gestão do site em revisão <ArrowUpRight size={14} /></a><small>© {new Date().getFullYear()} Mayer Esportes · Site em desenvolvimento</small></div></footer>
     {viewer && <Dialog title={`Modelo ${viewer.toUpperCase()}`} wide onClose={() => setViewer(null)}><iframe className="model-frame" title={`Modelo interativo do campo ${viewer}`} src={`${asset('viewer.html')}?court=${viewer}`} /><p className="viewer-note">Arraste para girar. Use o zoom para explorar. Modelo ilustrativo.</p></Dialog>}
   </>;
 }
-
-

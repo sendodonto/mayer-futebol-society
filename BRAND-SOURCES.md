@@ -30,3 +30,7 @@ Endereços, valores, horários, pagamento, cancelamento e medidas reais não for
 ## Aplicação de Impeccable e Taste
 
 Refinamento da apresentação existente conforme a referência oficial fornecida: vermelho, azul e branco; escudo real; linguagem esportiva; cabeçalho compacto; tipografia Barlow Condensed e DM Sans; modelos preservados. Removidos numerais decorativos, repetições de instruções e aparência de disponibilidade pública na agenda privada. Conteúdo oficial, galeria de capas, CTA por unidade, foco acessível, redução de movimento e responsividade.
+
+## Revisão solicitada pelo usuário
+
+Fundo branco em todo o site, hero com texto curto e modelos Fut5/Fut7 em destaque. As capas de vídeo e a imagem de identidade em baixa resolução foram retiradas da interface por solicitação do usuário. Os arquivos acima ficam arquivados como referência de origem; apenas o escudo é exibido. Os vídeos seguem disponíveis pelo link do perfil oficial.
