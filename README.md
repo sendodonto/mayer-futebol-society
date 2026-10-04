@@ -1,4 +1,27 @@
-# vinext-starter
+# Mayer — Futebol Society
+
+Site da Mayer com apresentação dos campos Fut5/Fut7, modelos 3D e sistema de reservas.
+
+- **Apresentação pública (GitHub Pages):** https://sendodonto.github.io/mayer-futebol-society/
+- **Agenda e gestão (revisão privada):** https://mayer-futebol-society.ezkn-p1.chatgpt.site
+
+O GitHub Pages publica a apresentação estática. Os botões de reserva, Minhas reservas e gestão levam ao sistema com servidor e banco D1. A agenda permanece privada e exige uma conta autorizada. Nenhuma disponibilidade fictícia é exibida como horário real, e nenhuma reserva é armazenada apenas no navegador.
+
+## Publicar no GitHub Pages
+
+O workflow `.github/workflows/pages.yml` compila e publica automaticamente a cada push em `main`. Em Settings → Pages, a origem é **GitHub Actions**. Para compilar localmente:
+
+```sh
+npm ci
+npm run build:pages
+npm run preview:pages
+```
+
+A saída estática é `pages-dist/`, ignorada pelo Git. Acesse o caminho `/mayer-futebol-society/` no servidor de preview. `PAGES_BASE_PATH` configura o prefixo de publicação; o workflow usa o nome do repositório. O código da apresentação fica em `pages/`, reutiliza a identidade visual e os arquivos `public/`, e não inclui rotas de API ou credenciais no pacote estático.
+
+Para alterar o destino da agenda, edite `BOOKING_ORIGIN` em `pages/PagesLanding.tsx`. Detalhes do sistema completo, regras, acesso da equipe e publicação do servidor estão em [MAYER.md](MAYER.md). Os prompts das imagens fictícias estão em [ASSETS.md](ASSETS.md).
+
+## Servidor de reservas — documentação do starter
 
 A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
 
